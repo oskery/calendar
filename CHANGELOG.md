@@ -1,5 +1,11 @@
 # @oskery/calendar
 
+## 0.2.2
+
+### Patch Changes
+
+- 294a4f0: Add customization and watch for css changes in devmode
+
 ## 0.2.1
 
 ### Patch Changes
