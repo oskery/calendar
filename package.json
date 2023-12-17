@@ -6,7 +6,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup index.ts --format cjs,esm --dts",
+    "build": "tsup index.tsx --format esm --dts",
     "release": "pnpm run build && changeset publish",
     "lint": "tsc"
   },
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
+    "preact": "^10.19.3",
     "tsup": "^6.7.0",
     "typescript": "^4.9.4"
   }
