@@ -1,5 +1,11 @@
 # @oskery/calendar
 
+## 0.2.0
+
+### Minor Changes
+
+- ca4bbc4: Correct dependencies
+
 ## 0.1.1
 
 ### Patch Changes
