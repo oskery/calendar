@@ -1,5 +1,0 @@
----
-"@oskery/calendar": patch
----
-
-Minify
