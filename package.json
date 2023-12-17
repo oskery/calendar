@@ -6,7 +6,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "tsup index.tsx --format esm --minify --watch",
+    "dev": "tsup index.tsx --format esm --minify --watch && npx tailwindcss -i index.css -o dist/index.css --watch",
     "build": "tsup index.tsx --format esm --dts --minify",
     "release": "pnpm run build && changeset publish",
     "lint": "tsc"

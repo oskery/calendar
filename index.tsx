@@ -23,17 +23,17 @@ export default function Calendar({
   const [focused, setFocused] = useState(today)
   const days = useDays(focused)
 
-  const btn = "hover:bg-gray-200 focus-visible:ring-indigo-500 ring-2 ring-inset ring-transparent rounded-md outline-none"
+  const focus = "hover:bg-d-hover focus-visible:ring-d-focus ring-2 ring-inset ring-transparent rounded-md outline-none"
 
   return (
-    <div className="text-center text-2xl flex">
-      <button onClick={() => setFocused(setDate(focused, 'month', focused.getMonth() - 1))} className={classNames(btn)}>
+    <div className="text-2xl flex">
+      <button onClick={() => setFocused(setDate(focused, 'month', focused.getMonth() - 1))} className={focus}>
         <Chevron className="rotate-180" />
       </button>
       <div className="grid grid-cols-7 rounded-lg">
         <div className="col-span-7 flex-auto font-semibold">
           <select
-            className={classNames(btn, "w-2/3 p-2")}
+            className={classNames(focus, "w-2/3 p-2")}
             value={focused.getMonth()}
             onChange={(e) => setFocused(setDate(focused, "month", parseInt((e.target as HTMLSelectElement).value)))}
           >
@@ -42,7 +42,7 @@ export default function Calendar({
             )}
           </select>
           <select
-            className={classNames(btn, "w-1/3 p-2")}
+            className={classNames(focus, "w-1/3 p-2")}
             value={focused.getFullYear()}
             onChange={(e) => setFocused(setDate(focused, 'year', parseInt((e.target as HTMLSelectElement).value)))}
           >
@@ -72,7 +72,7 @@ export default function Calendar({
 
           return <button
             key={i}
-            className={classNames(btn, "group p-1")}
+            className={classNames(focus, "group p-1")}
             onClick={() => {
               setSelected(date)
               props.onChange(date)
@@ -81,11 +81,10 @@ export default function Calendar({
           >
             <time
               className={classNames(
-                'p-1 flex items-center justify-center aspect-square rounded-md ring-1',
+                'p-1 flex justify-center rounded-md ring-1',
                 sameMonth ? "font-medium" : "text-black/50",
-                isSelected && 'bg-indigo-500 text-white',
-                isToday ? 'ring-indigo-500' : "ring-transparent",
-                !isSelected && !isToday && 'group-hover:bg-gray-200'
+                isSelected && 'bg-d-focus text-white',
+                isToday ? 'ring-d-focus' : "ring-transparent"
               )}
               dateTime={date.toISOString()}>
               {date.getDate()}
@@ -93,7 +92,7 @@ export default function Calendar({
           </button>
         })}
         <button
-          className={classNames(btn, "col-span-7 flex items-center justify-center p-1 rounded-md mt-2")}
+          className={classNames(focus, "col-span-7 flex justify-center p-1 rounded-md mt-2")}
           onClick={() => {
             setFocused(today);
             setSelected(today);
@@ -103,7 +102,7 @@ export default function Calendar({
           {cap(new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }).formatToParts(0, 'day')[0]?.value || "")}
         </button>
       </div>
-      <button onClick={() => setFocused(setDate(focused, 'month', focused.getMonth() + 1))} className={classNames(btn)}>
+      <button onClick={() => setFocused(setDate(focused, 'month', focused.getMonth() + 1))} className={focus}>
         <Chevron />
       </button>
     </div>
