@@ -28,9 +28,7 @@ export default function Calendar({
   return (
     <div className="text-center text-2xl flex">
       <button onClick={() => setFocused(setDate(focused, 'month', focused.getMonth() - 1))} className={classNames(btn)}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-12 h-12 rotate-180">
-          <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-        </svg>
+        <Chevron className="rotate-180" />
       </button>
       <div className="grid grid-cols-7 rounded-lg">
         <div className="col-span-7 flex-auto font-semibold">
@@ -106,17 +104,19 @@ export default function Calendar({
         </button>
       </div>
       <button onClick={() => setFocused(setDate(focused, 'month', focused.getMonth() + 1))} className={classNames(btn)}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-12 h-12">
-          <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-        </svg>
+        <Chevron />
       </button>
     </div>
   )
 }
 
-function cap(string: string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+const Chevron = ({ className = "" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={classNames("w-12 h-12", className)}>
+    <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+  </svg>
+)
+
+const cap = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
 
 function arr<T>(n: number, cb?: ((x: unknown, i: number) => T) | T): T[] {
   return Array(n).fill(0).map((x, i) => cb ? cb instanceof Function ? cb(x, i) : cb : x)
@@ -132,24 +132,12 @@ function useDays(date: Date) {
   return arr(42, (_, i) => new Date(start.getFullYear(), start.getMonth(), start.getDate() + i))
 }
 
-function setDate(date: Date, type: 'year' | 'month' | 'day', value: number): Date {
+function setDate(date: Date, type: 'year' | 'month', value: number): Date {
   const newDate = new Date(date.getTime());
-  switch (type) {
-    case 'year':
-      newDate.setFullYear(value);
-      break;
-    case 'month':
-      newDate.setMonth(value);
-      break;
-    case 'day':
-      newDate.setDate(value);
-      break;
-  }
+  newDate[type === 'year' ? 'setFullYear' : 'setMonth'](value);
   return newDate;
 }
 
 const isSameDay = (date1: Date, date2: Date) => date1.toISOString().split('T')[0] === date2.toISOString().split('T')[0];
 
-function classNames(...classes: (string | boolean)[]) {
-  return classes.filter(Boolean).join(" ");
-}
+const classNames = (...classes: (string | boolean)[]) => classes.filter(Boolean).join(" ")
