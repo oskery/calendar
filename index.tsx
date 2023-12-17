@@ -1,5 +1,6 @@
 
 import { useState } from "preact/hooks";
+import "./index.css";
 
 const today = new Date();
 
