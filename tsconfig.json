@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
+    "jsx": "react",
     /* Base Options: */
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "baseUrl": "./",
     "target": "es2022",
+    "paths": {
+      "react": ["./node_modules/preact/compat/"],
+      "react-dom": ["./node_modules/preact/compat/"]
+    },
     // "verbatimModuleSyntax": true,
     "allowJs": true,
     "resolveJsonModule": true,
