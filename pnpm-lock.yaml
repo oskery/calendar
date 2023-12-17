@@ -4,14 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  react:
-    specifier: npm:@preact/compat@^17.1.2
-    version: /@preact/compat@17.1.2(preact@10.19.3)
-  react-dom:
-    specifier: npm:@preact/compat@^17.1.2
-    version: /@preact/compat@17.1.2(preact@10.19.3)
-
 devDependencies:
   '@changesets/cli':
     specifier: ^2.26.0
@@ -22,6 +14,12 @@ devDependencies:
   preact:
     specifier: ^10.19.3
     version: 10.19.3
+  react:
+    specifier: npm:@preact/compat@^17.1.2
+    version: /@preact/compat@17.1.2(preact@10.19.3)
+  react-dom:
+    specifier: npm:@preact/compat@^17.1.2
+    version: /@preact/compat@17.1.2(preact@10.19.3)
   tailwindcss:
     specifier: ^3.3.6
     version: 3.3.6
@@ -526,7 +524,7 @@ packages:
       preact: '*'
     dependencies:
       preact: 10.19.3
-    dev: false
+    dev: true
 
   /@types/minimist@1.2.5:
     resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}
@@ -2040,6 +2038,7 @@ packages:
 
   /preact@10.19.3:
     resolution: {integrity: sha512-nHHTeFVBTHRGxJXKkKu5hT8C/YWBkPso4/Gad6xuj5dbptt9iF9NZr9pHbPhBrnT2klheu7mHTxTZ/LjwJiEiQ==}
+    dev: true
 
   /preferred-pm@3.1.2:
     resolution: {integrity: sha512-nk7dKrcW8hfCZ4H6klWcdRknBOXWzNQByJ0oJyX97BOupsYD+FzLS4hflgEu/uPUEHZCuRfMxzCBsuWd7OzT8Q==}
